@@ -1,115 +1,75 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+  darkMode: ["class"],
   content: [
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
+    container: {
+      center: true,
+      padding: "2rem",
+      screens: {
+        "2xl": "1400px",
+      },
+    },
     extend: {
       colors: {
-        primary: '#FF784D',
-        orange: '#FF784D',
-        specialYellow: '#FFB511',
-        green: '#4E754F',
-        blue: '#4954D2',
-        grey: '#E9E9E9',
-        background: '#F4F4F4',
-        stripe: '#625BF6',
-      },
-      fontFamily: {
-        body: ['Isola'],
-        headline: ['Moderat'],
+        border: "hsl(var(--border))",
+        input: "hsl(var(--input))",
+        ring: "hsl(var(--ring))",
+        background: "hsl(var(--background))",
+        foreground: "hsl(var(--foreground))",
+        primary: {
+          DEFAULT: "hsl(var(--primary))",
+          foreground: "hsl(var(--primary-foreground))",
+        },
+        secondary: {
+          DEFAULT: "hsl(var(--secondary))",
+          foreground: "hsl(var(--secondary-foreground))",
+        },
+        destructive: {
+          DEFAULT: "hsl(var(--destructive))",
+          foreground: "hsl(var(--destructive-foreground))",
+        },
+        muted: {
+          DEFAULT: "hsl(var(--muted))",
+          foreground: "hsl(var(--muted-foreground))",
+        },
+        accent: {
+          DEFAULT: "hsl(var(--accent))",
+          foreground: "hsl(var(--accent-foreground))",
+        },
+        popover: {
+          DEFAULT: "hsl(var(--popover))",
+          foreground: "hsl(var(--popover-foreground))",
+        },
+        card: {
+          DEFAULT: "hsl(var(--card))",
+          foreground: "hsl(var(--card-foreground))",
+        },
       },
       borderRadius: {
-        'semi-huge': '60px',
-        'huge': '75px',
-        'large': '40px',
-      },
-      aspectRatio: {
-        '4/3': '4 / 3',
-      },
-      dropShadow: {
-        'addons': '0 4px 12px rgba(0, 0, 0, 0.1)'
-      },
-      boxShadow: {
-        'basket': '-20px 0px 150px rgba(0, 0, 0, 0.1)',
-        'button-hover': '0px 2px 20px rgba(0, 0, 0, 0.15)'
-      },
-      backgroundImage: {
-        'desktop-shapes-svg': "url('assets/desktop-shapes.svg')",
-        'mobile-shapes-svg': "url('assets/mobile-shapes.svg')",
-        'custom-colours-background': 'radial-gradient(circle, rgba(245, 245, 245, 0.7) 80%, rgba(0,0,0,0) 95%)',
-      },
-      transitionTimingFunction: {
-        kibushopdefault: 'cubic-bezier(0.250, 0.250, 0.000, 1.000)',
-        hypereaseout: 'cubic-bezier(0.000, 0.970, 0.000, 1.000)'
-      },
-      animation: {
-        'truck-animation': 'truck 3s ease-out infinite',
-        'spin': 'spin 1s linear infinite',
-        'pulse': 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-        'scroll': 'scroll 40s linear infinite',
-      },
-      keyframes: {
-        truck: {
-          '0%': { transform: 'translate(-15px)', opacity: '0' },
-          '20%': { transform: 'translate(0px)', opacity: '100' },
-          '98%': { transform: 'translate(0px)', opacity: '100' },
-          '100%': { transform: 'translate(0px)', opacity: '0' },
-        },
-        spin: {
-          '0%': { transform: 'rotate(0deg)' },
-          '100%': { transform: 'rotate(360deg)' },
-        },
-        pulse: {
-          '0%, 100%': { opacity: '1' },
-          '50%': { opacity: '.5' },
-        },
-        scroll: {
-          '0%': { transform: 'translateX(0)' },
-          '100%': { transform: 'translateX(-50%)' },
-        },
-      },
-      typography: {
-        DEFAULT: {
-          css: {
-            maxWidth: 'none',
-            color: '#4B5563',
-            h3: {
-              color: '#000000',
-              fontWeight: '600',
-            },
-            strong: {
-              color: '#000000',
-              fontWeight: '600',
-            },
-            li: {
-              marginTop: '0.5em',
-              marginBottom: '0.5em',
-            },
-            'ul > li': {
-              paddingLeft: '1.5em',
-            },
-            'ul > li::before': {
-              backgroundColor: '#FF784D',
-            },
-          },
-        },
+        lg: "var(--radius)",
+        md: "calc(var(--radius) - 2px)",
+        sm: "calc(var(--radius) - 4px)",
       },
     },
   },
   plugins: [
     require('@tailwindcss/typography'),
+    require("tailwindcss-animate"),
+    function({ addUtilities }) {
+      const newUtilities = {
+        '.no-scrollbar::-webkit-scrollbar': {
+          display: 'none',
+        },
+        '.no-scrollbar': {
+          '-ms-overflow-style': 'none',
+          'scrollbar-width': 'none',
+        },
+      }
+      addUtilities(newUtilities)
+    }
   ],
-  layer: {
-    utilities: {
-      '.no-scrollbar::-webkit-scrollbar': {
-        display: 'none',
-      },
-      '.no-scrollbar': {
-        '-ms-overflow-style': 'none',
-        'scrollbar-width': 'none',
-      },
-    },
-  },
 }
