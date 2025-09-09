@@ -14,6 +14,14 @@ module.exports = {
       },
     },
     extend: {
+      width: {
+        'sidebar': 'var(--sidebar-width, 16rem)',
+        'sidebar-icon': 'var(--sidebar-width-icon, 3rem)',
+      },
+      spacing: {
+        'sidebar': 'var(--sidebar-width, 16rem)',
+        'sidebar-icon': 'var(--sidebar-width-icon, 3rem)',
+      },
       colors: {
         border: "var(--border)",
         input: "var(--input)",
@@ -48,6 +56,16 @@ module.exports = {
           DEFAULT: "var(--card)",
           foreground: "var(--card-foreground)",
         },
+        sidebar: {
+          DEFAULT: "var(--sidebar-background)",
+          foreground: "var(--sidebar-foreground)",
+          primary: "var(--sidebar-primary)",
+          "primary-foreground": "var(--sidebar-primary-foreground)",
+          accent: "var(--sidebar-accent)",
+          "accent-foreground": "var(--sidebar-accent-foreground)",
+          border: "var(--sidebar-border)",
+          ring: "var(--sidebar-ring)",
+        },
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -68,8 +86,20 @@ module.exports = {
           '-ms-overflow-style': 'none',
           'scrollbar-width': 'none',
         },
+        '.w-\\(--sidebar-width\\)': {
+          width: 'var(--sidebar-width)',
+        },
+        '.w-\\(--sidebar-width-icon\\)': {
+          width: 'var(--sidebar-width-icon)',
+        },
+        '.h-svh': {
+          height: '100svh',
+        },
       }
       addUtilities(newUtilities)
     }
   ],
+  future: {
+    hoverOnlyWhenSupported: true,
+  },
 }
