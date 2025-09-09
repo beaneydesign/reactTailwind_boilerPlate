@@ -72,7 +72,7 @@
 }
 
 @layer base {
-  * {
+  /* * {
     border-color: var(--border);
   }
 
@@ -89,26 +89,11 @@
   code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
       monospace;
-  }
+  } */
 }
 
-@layer components {
+@layer components {}
 
-  /* App-specific components */
-  .app-header {
-    @apply bg-card shadow-md py-4;
-  }
+@theme inline {}
 
-  .app-footer {
-    @apply mt-auto py-4 text-center text-muted-foreground;
-  }
-
-  /* Reusable components */
-  .btn-primary {
-    @apply bg-primary text-primary-foreground px-4 py-2 rounded hover:bg-primary/90 transition-colors duration-200;
-  }
-
-  .card {
-    @apply bg-card text-card-foreground rounded-lg shadow-md p-6;
-  }
-}
+@layer base {}
